@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64E533D52704B14900212AEB /* RaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E533D42704B14900212AEB /* RaitingView.swift */; };
 		D8403E9C26D0FD8800B3E9BE /* FirstViewSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8403E9B26D0FD8800B3E9BE /* FirstViewSwiftUIView.swift */; };
 		D8403EA026D3F88F00B3E9BE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8403E9F26D3F88F00B3E9BE /* WelcomeView.swift */; };
 		D8403EA226D3F8B700B3E9BE /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8403EA126D3F8B700B3E9BE /* ExerciseView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64E533D42704B14900212AEB /* RaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingView.swift; sourceTree = "<group>"; };
 		D8403E9B26D0FD8800B3E9BE /* FirstViewSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewSwiftUIView.swift; sourceTree = "<group>"; };
 		D8403E9F26D3F88F00B3E9BE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		D8403EA126D3F8B700B3E9BE /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				D8FFDD8B26D0B2AE00CA547B /* ContentView.swift */,
 				D8403E9F26D3F88F00B3E9BE /* WelcomeView.swift */,
 				D8403EA126D3F8B700B3E9BE /* ExerciseView.swift */,
+				64E533D42704B14900212AEB /* RaitingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FFDD8C26D0B2AE00CA547B /* ContentView.swift in Sources */,
+				64E533D52704B14900212AEB /* RaitingView.swift in Sources */,
 				D8403E9C26D0FD8800B3E9BE /* FirstViewSwiftUIView.swift in Sources */,
 				D8FFDD8A26D0B2AE00CA547B /* firstSiwftUIAppApp.swift in Sources */,
 				D8403EA026D3F88F00B3E9BE /* WelcomeView.swift in Sources */,

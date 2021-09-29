@@ -11,6 +11,7 @@ struct ExerciseView: View {
     let videoNames = ["video1", "video2", "video3"]
     let songNames = ["please don't go", "comethru", "dancing with your ghost"]
     let index: Int
+    let interval: TimeInterval = 30
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -20,10 +21,18 @@ struct ExerciseView: View {
                     VideoPlayer(player: AVPlayer(url: url))
                         .frame(height: geometry.size.height * 0.45)
                 }
-                Text("Timer")
-                Text("start/Done button")
-                Text("Rating")
-                Text("History button")
+                Text(Date().addingTimeInterval(interval), style: .timer)
+                    .font(.system(size: 90))
+                Button("Start/Done") {}
+                    .font(.title3)
+                    .padding()
+                RaitingView()
+                    .padding()
+                Spacer()
+                Button("Button History") {}
+                    .font(.title3)
+                    .padding()
+
             }
         }
     }
