@@ -19,7 +19,7 @@ struct ExerciseView: View {
                     .padding(.bottom)
                 if let url = Bundle.main.url(forResource: videoNames[index], withExtension: ".mp4") {
                     VideoPlayer(player: AVPlayer(url: url))
-                        .frame(height: geometry.size.height * 0.45)
+                        .frame(height: geometry.size.height * 0.35)
                 }
                 Text(Date().addingTimeInterval(interval), style: .timer)
                     .font(.system(size: 90))

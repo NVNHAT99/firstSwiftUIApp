@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            WelcomeView()
             ForEach(0 ..< 3) { index in
                 ExerciseView(index: index)
             }
