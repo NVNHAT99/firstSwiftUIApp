@@ -15,14 +15,14 @@ struct ExerciseView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                HeaderView(songName: songNames[index])
-                    .padding(.bottom)
+                HeaderView(titleText: songNames[index])
+                    .padding(.bottom,10)
                 if let url = Bundle.main.url(forResource: videoNames[index], withExtension: ".mp4") {
                     VideoPlayer(player: AVPlayer(url: url))
                         .frame(height: geometry.size.height * 0.35)
                 }
                 Text(Date().addingTimeInterval(interval), style: .timer)
-                    .font(.system(size: 90))
+                    .font(.system(size: 60))
                 Button("Start/Done") {}
                     .font(.title3)
                     .padding()
@@ -45,12 +45,13 @@ struct ExerciseView_Previews: PreviewProvider {
 }
 
 struct HeaderView: View {
-    let songName: String
+    let titleText: String
     var body: some View {
         VStack {
-            Text(songName)
+            Text(titleText)
                 .font(.largeTitle)
             HStack {
+                Image(systemName: "hand.wave")
                 Image(systemName: "1.circle")
                 Image(systemName: "2.circle")
                 Image(systemName: "3.circle")
@@ -64,9 +65,9 @@ struct HeaderView: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderView(songName: "don't let go")
+            HeaderView(titleText: "don't let go")
                 .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)
-            HeaderView(songName: "don't let go")
+            HeaderView(titleText: "don't let go")
                 .preferredColorScheme(.dark)
                 .environment(\.sizeCategory, .accessibilityLarge)
                 .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)

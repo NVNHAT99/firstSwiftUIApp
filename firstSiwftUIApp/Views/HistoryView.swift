@@ -19,25 +19,34 @@ struct HistoryView: View {
 //        return formatter
 //    }()
     var body: some View {
-        VStack {
-            Text("History")
-                .font(.title)
-            Form {
-                Section {
-                    ForEach(exercises1, id: \.self) { exercise in
-                        Text(exercise)
+        ZStack(alignment: .topTrailing) {
+            Button {
+                
+            } label: {
+                Image(systemName: "xmark.circle")
+            }
+            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            .padding(.trailing)
+            VStack {
+                Text("History")
+                    .font(.title)
+                Form {
+                    Section {
+                        ForEach(exercises1, id: \.self) { exercise in
+                            Text(exercise)
+                        }
+                    } header: {
+                        Text(today.forrmatted(as: "MMM d"))
                     }
-                } header: {
-                    Text(today.forrmatted(as: "MMM d"))
-                }
-                Section {
-                    ForEach(exercises2, id: \.self) { exercise in
-                        Text(exercise)
+                    Section {
+                        ForEach(exercises2, id: \.self) { exercise in
+                            Text(exercise)
+                        }
+                    } header: {
+                        Text(yesterday.forrmatted(as: "MMM d"))
                     }
-                } header: {
-                    Text(yesterday.forrmatted(as: "MMM d"))
-                }
 
+                }
             }
         }
     }
@@ -46,6 +55,6 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryView()
-            .previewLayout(.sizeThatFits)
+            .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)
     }
 }
