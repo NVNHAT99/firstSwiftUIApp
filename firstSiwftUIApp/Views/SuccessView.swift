@@ -16,22 +16,7 @@ struct SuccessView: View {
                         So eat well and get some rest.
                         """
     var body: some View {
-        ZStack{
-            VStack {
-                HStack {
-                    Spacer()
-                    ZStack(alignment: .topTrailing) {
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "xmark.circle")
-                        }
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .padding(.trailing)
-                    }
-                }
-                Spacer()
-            }
+        ZStack {
             VStack {
                 Spacer()
                 Button {

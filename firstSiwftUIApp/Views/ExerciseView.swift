@@ -7,17 +7,18 @@
 
 import SwiftUI
 import AVKit
+
 struct ExerciseView: View {
-    let videoNames = ["video1", "video2", "video3"]
-    let songNames = ["please don't go", "comethru", "dancing with your ghost"]
     let index: Int
     let interval: TimeInterval = 30
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                HeaderView(titleText: songNames[index])
+                HeaderView(titleText:
+                            Exercise.exercises[index].exerciseName)
                     .padding(.bottom, 10)
-                if let url = Bundle.main.url(forResource: videoNames[index], withExtension: ".mp4") {
+                if let url = Bundle.main.url(forResource: Exercise.exercises[index].videoName, withExtension: ".mp4") {
                     VideoPlayer(player: AVPlayer(url: url))
                         .frame(height: geometry.size.height * 0.35)
                 }
@@ -60,6 +61,15 @@ struct HeaderView: View {
             .font(.title2)
         }
     }
+}
+
+extension Exercise {
+    static let exercises = [
+        Exercise(exerciseName: ExerciseEnum.squat.rawValue, videoName: "squat"),
+        Exercise(exerciseName: ExerciseEnum.stepUp.rawValue, videoName: "step-up"),
+        Exercise(exerciseName: ExerciseEnum.burpee.rawValue, videoName: "burpee"),
+        Exercise(exerciseName: ExerciseEnum.sunSalute.rawValue, videoName: "sun-salute")
+    ]
 }
 
 struct HeaderView_Previews: PreviewProvider {
