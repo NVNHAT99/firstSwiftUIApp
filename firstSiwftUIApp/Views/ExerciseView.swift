@@ -24,7 +24,7 @@ struct ExerciseView: View {
                 }
                 Text(Date().addingTimeInterval(interval), style: .timer)
                     .font(.system(size: 60))
-                Button("Start/Done") {}
+                Button(NSLocalizedString("Start/Done", comment: "")) {}
                     .font(.title3)
                     .padding()
                 RaitingView()
@@ -65,10 +65,10 @@ struct HeaderView: View {
 
 extension Exercise {
     static let exercises = [
-        Exercise(exerciseName: ExerciseEnum.squat.rawValue, videoName: "squat"),
-        Exercise(exerciseName: ExerciseEnum.stepUp.rawValue, videoName: "step-up"),
-        Exercise(exerciseName: ExerciseEnum.burpee.rawValue, videoName: "burpee"),
-        Exercise(exerciseName: ExerciseEnum.sunSalute.rawValue, videoName: "sun-salute")
+        Exercise(exerciseName: String(describing: ExerciseEnum.squat), videoName: "squat"),
+        Exercise(exerciseName: String(describing: ExerciseEnum.stepUp), videoName: "step-up"),
+        Exercise(exerciseName: String(describing: ExerciseEnum.burpee), videoName: "burpee"),
+        Exercise(exerciseName: String(describing: ExerciseEnum.sunSalute), videoName: "sun-salute")
     ]
 }
 

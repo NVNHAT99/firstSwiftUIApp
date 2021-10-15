@@ -19,7 +19,7 @@ struct HistoryView: View {
             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             .padding(.trailing)
             VStack {
-                Text("History")
+                Text(NSLocalizedString("History", comment: ""))
                     .font(.title)
                 Form {
                     ForEach(history.exerciseDays) { day in
@@ -30,7 +30,6 @@ struct HistoryView: View {
                         } header: {
                             Text(day.date.forrmatted(as: "MMM d"))
                         }
-
                     }
                 }
             }
