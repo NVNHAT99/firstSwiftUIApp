@@ -13,7 +13,7 @@ struct WelcomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                HeaderView(titleText: NSLocalizedString("Welcome", comment: "Greeting"))
+                HeaderView(selectedTab: $selectedTab, titleText: NSLocalizedString("Welcome", comment: "Greeting"))
                 Spacer()
                 Button(NSLocalizedString("History", comment: "view user activity")) {
                 }

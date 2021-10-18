@@ -10,6 +10,7 @@ import AVKit
 
 struct ExerciseView: View {
     @Binding var selectedTab: Int
+    @State private var rating = 0
     let index: Int
     let interval: TimeInterval = 30
     var lastExercise: Bool {
@@ -19,7 +20,7 @@ struct ExerciseView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                HeaderView(titleText:
+                HeaderView(selectedTab: $selectedTab, titleText:
                             Exercise.exercises[index].exerciseName)
                     .padding(.bottom, 10)
                 if let url = Bundle.main.url(forResource: Exercise.exercises[index].videoName, withExtension: ".mp4") {
@@ -29,17 +30,17 @@ struct ExerciseView: View {
                 Text(Date().addingTimeInterval(interval), style: .timer)
                     .font(.system(size: 60))
                 HStack(spacing: 150) {
-                    Button("Start Exercise"){
+                    Button("Start Exercise") {
                         
                     }
                     
-                    Button("Done"){
+                    Button("Done") {
                         selectedTab = lastExercise ? 9 : selectedTab + 1
                     }
                 }
                 .font(.title3)
                 .padding()
-                RaitingView()
+                RatingView(rating: $rating)
                     .padding()
                 Spacer()
                 Button("Button History") {}
@@ -53,22 +54,26 @@ struct ExerciseView: View {
 
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView(selectedTab: .constant(1),index: 1)
+        ExerciseView(selectedTab: .constant(1), index: 1)
     }
 }
 
 struct HeaderView: View {
+    @Binding var selectedTab: Int
     let titleText: String
+    
     var body: some View {
         VStack {
             Text(titleText)
                 .font(.largeTitle)
             HStack {
-                Image(systemName: "hand.wave")
-                Image(systemName: "1.circle")
-                Image(systemName: "2.circle")
-                Image(systemName: "3.circle")
-                Image(systemName: "4.circle")
+                ForEach(0 ..< Exercise.exercises.count) { index in
+                    let fill = index == selectedTab ? ".fill" : ""
+                    Image(systemName: "\(index + 1).circle\(fill)")
+                        .onTapGesture {
+                            selectedTab = index
+                        }
+                }
             }
             .font(.title2)
         }
@@ -87,9 +92,9 @@ extension Exercise {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderView(titleText: "don't let go")
+            HeaderView(selectedTab: .constant(0), titleText: "don't let go")
                 .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)
-            HeaderView(titleText: "don't let go")
+            HeaderView(selectedTab: .constant(1), titleText: "don't let go")
                 .preferredColorScheme(.dark)
                 .environment(\.sizeCategory, .accessibilityLarge)
                 .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)
