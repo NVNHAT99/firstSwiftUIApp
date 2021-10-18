@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SuccessView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var selectedTab: Int
     let highFiveText = """
                         Good job completing \
                         all your four exercises!
@@ -20,6 +22,8 @@ struct SuccessView: View {
             VStack {
                 Spacer()
                 Button {
+                    selectedTab = 9
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Continue")
                 }
@@ -41,6 +45,6 @@ struct SuccessView: View {
 
 struct SuccessView_Previews: PreviewProvider {
     static var previews: some View {
-        SuccessView()
+        SuccessView(selectedTab: .constant(3))
     }
 }
