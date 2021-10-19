@@ -13,8 +13,9 @@ struct ExerciseView: View {
     @State private var rating = 0
     @State private var showHistory = false
     @State private var showSuccessView = false
+    @State private var timerDone = false
+    @State private var showTimer = false
     let index: Int
-    let interval: TimeInterval = 30
     var lastExercise: Bool {
      index + 1 == Exercise.exercises.count
     }
@@ -29,20 +30,20 @@ struct ExerciseView: View {
                     VideoPlayer(player: AVPlayer(url: url))
                         .frame(height: geometry.size.height * 0.35)
                 }
-                Text(Date().addingTimeInterval(interval), style: .timer)
-                    .font(.system(size: 60))
                 HStack(spacing: 150) {
                     Button("Start Exercise") {
-                        
+                        showTimer.toggle()
                     }
-                    
                     Button("Done") {
+                        timerDone = false
+                        showTimer.toggle()
                         if lastExercise {
                             showSuccessView.toggle()
                         } else {
                             selectedTab += 1
                         }
                     }
+                    .disabled(!timerDone)
                     .sheet(isPresented: $showSuccessView) {
                         
                     } content: {
@@ -52,9 +53,12 @@ struct ExerciseView: View {
                 }
                 .font(.title3)
                 .padding()
+                if showTimer {
+                    TimerView(timeDone: $timerDone)
+                }
+                Spacer()
                 RatingView(rating: $rating)
                     .padding()
-                Spacer()
                 Button("History") {
                  showHistory.toggle()
                 }
@@ -63,7 +67,7 @@ struct ExerciseView: View {
                 }
                 .font(.title3)
                 .padding()
-
+                
             }
         }
     }
