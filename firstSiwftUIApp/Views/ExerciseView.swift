@@ -15,6 +15,7 @@ struct ExerciseView: View {
     @State private var showSuccessView = false
     @State private var timerDone = false
     @State private var showTimer = false
+    @EnvironmentObject var history: HistoryStore
     let index: Int
     var lastExercise: Bool {
      index + 1 == Exercise.exercises.count
@@ -35,6 +36,7 @@ struct ExerciseView: View {
                         showTimer.toggle()
                     }
                     Button("Done") {
+                        history.addDoneExercise(Exercise.exercises[index].exerciseName)
                         timerDone = false
                         showTimer.toggle()
                         if lastExercise {
@@ -76,6 +78,7 @@ struct ExerciseView: View {
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseView(selectedTab: .constant(3), index: 3)
+            .environmentObject(HistoryStore())
     }
 }
 
