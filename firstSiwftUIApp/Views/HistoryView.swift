@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     @Binding var showHistory: Bool
-    
-    let history = HistoryStore()
+    @Binding var history: HistoryStore
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Button {
@@ -41,7 +40,7 @@ struct HistoryView: View {
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(showHistory: .constant(true))
+        HistoryView(showHistory: .constant(true), history: .constant(HistoryStore()))
             .previewLayout(/*@START_MENU_TOKEN@*/.sizeThatFits/*@END_MENU_TOKEN@*/)
     }
 }

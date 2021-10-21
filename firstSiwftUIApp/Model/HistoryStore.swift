@@ -21,4 +21,15 @@ struct HistoryStore {
         createDevData()
         #endif
     }
+    
+    mutating func addDoneExercise(_ exerciseName: String) {
+        let today = Date()
+        if today.isSameDate(as: exerciseDays[0].date) {
+            exerciseDays[0].exercises.append(exerciseName)
+        } else {
+            exerciseDays.insert( // 2
+                ExerciseDay(date: today, exercises: [exerciseName]),
+                at: 0)
+        }
+    }
 }
